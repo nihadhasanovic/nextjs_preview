@@ -93,16 +93,18 @@ export async function generateMetadata(
   } catch (error) {
     console.error("Error fetching clip:", error);
     return {
-      title: `Failed to fetch clip (ID: ${id})`,
-      description: "Error loading clip data from AWS Amplify.",
+      title: "Football Fans",
+      description:
+        "Join the ultimate community for football fans. Connect with other fans, share your passion, and stay updated with the latest in football.",
     };
   }
 
   // 2) If no clip or missing thumbnail, fallback meta
   if (!clip?.media?.thumbnailPath) {
     return {
-      title: `Clip Not Found (ID: ${id})`,
-      description: `We couldn't find a clip or thumbnail for ID: ${id}.`,
+      title: "Football Fans",
+      description:
+        "Join the ultimate community for football fans. Connect with other fans, share your passion, and stay updated with the latest in football.",
     };
   }
 
@@ -110,11 +112,13 @@ export async function generateMetadata(
   // 4) Construct dynamic metadata
   const thumbnailUrl = clip.media.thumbnailPath;
   return {
-    title: `Clip #${id} | My Next.js App`,
-    description: `Dynamically loaded clip #${id} from AWS Amplify (AppSync).`,
+    title: "Football Fans",
+    description:
+      "Join the ultimate community for football fans. Connect with other fans, share your passion, and stay updated with the latest in football.",
     openGraph: {
-      title: `Clip #${id} — Watch Now!`,
-      description: `Open Graph data for clip #${id}.`,
+      title: "Football Fans",
+      description:
+        "Join the ultimate community for football fans. Connect with other fans, share your passion, and stay updated with the latest in football.",
       url: `https://nextjs-preview-seven.vercel.app/clip/${id}`,
       siteName: "My Next.js App",
       images: [{
@@ -124,8 +128,9 @@ export async function generateMetadata(
     },
     twitter: {
       card: "summary_large_image",
-      title: `Clip #${id} — Watch Now!`,
-      description: `Twitter Card data for clip #${id}.`,
+      title: "Football Fans",
+      description:
+        "Join the ultimate community for football fans. Connect with other fans, share your passion, and stay updated with the latest in football.",
       images: thumbnailUrl,
     },
   };
