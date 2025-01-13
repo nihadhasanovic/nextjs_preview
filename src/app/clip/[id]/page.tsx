@@ -1,6 +1,6 @@
 // app/clip/[id]/page.tsx
 
-import type { Metadata, ResolvingMetadata } from "next";
+import type { Metadata } from "next";
 
 // 0️⃣ Force dynamic rendering so each request can fetch fresh data
 export const dynamic = "force-dynamic";
