@@ -78,8 +78,7 @@ async function fetchClipById(id: string): Promise<Clip> {
  * Next.js calls this on the server each time someone requests /clip/[id].
  */
 export async function generateMetadata(
-  { params }: Props,
-  parent: ResolvingMetadata
+  { params }: Props
 ): Promise<Metadata> {
   // The dynamic route param from /clip/[id]
   const id = (await params).id
@@ -107,8 +106,6 @@ export async function generateMetadata(
     };
   }
 
-  // 3) Optionally read parent's metadata if you want to extend it:
-  const previousOpenGraphImages = (await parent).openGraph?.images || [];
 
   // 4) Construct dynamic metadata
   const thumbnailUrl = clip.media.thumbnailPath;
@@ -118,16 +115,18 @@ export async function generateMetadata(
     openGraph: {
       title: `Clip #${id} — Watch Now!`,
       description: `Open Graph data for clip #${id}.`,
-      url: `https://your-domain.com/clip/${id}`, // change to your domain
+      url: `https://nextjs-preview-seven.vercel.app/clip/${id}`,
       siteName: "My Next.js App",
-      images: [thumbnailUrl, ...previousOpenGraphImages],
-      type: "website", // or "video.other", etc.
+      images: [{
+        url: thumbnailUrl,
+      }],
+      type: "website", 
     },
     twitter: {
       card: "summary_large_image",
       title: `Clip #${id} — Watch Now!`,
       description: `Twitter Card data for clip #${id}.`,
-      images: [thumbnailUrl],
+      images: thumbnailUrl,
     },
   };
 }
